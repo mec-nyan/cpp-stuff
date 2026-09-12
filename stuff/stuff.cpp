@@ -5,8 +5,10 @@ using namespace std;
 // [Scope/lifetime] This binding is global (avoid).
 constexpr auto pi{ 3.1416 };
 
-// [functions] Declare a function (return_value name(args);).
-constexpr double get_circle_area ( float radius );
+// [functions] Declare a function ([qualifiers] return_value name([args]);).
+constexpr double get_circle_area ( double radius );
+
+constexpr double get_square_area ( double side );
 
 int main ()
 {
@@ -26,13 +28,36 @@ int main ()
     auto area{ get_circle_area ( rad ) };
 
     println ( "The area of a circle of radius {} is {:.2f}.", rad, area );
+
+    // [scope/lifetime]
+    {
+        // 'side' starts its life here.
+        auto side{ 10 };
+        // NOT the same 'area' than before!
+        // This is a new variable!
+        auto area{ get_square_area ( side ) };
+
+        println ( "The area of a square of side {} is {:.2f}.", side, area );
+
+        // side's liftime ends here.
+        // So this inner block's "area"'s lifetime.
+    }
+
+    // !!! "side" don't exist here!
+    // !!! "area" is the other "area" ...
+    // println ( "The area of a square of side {} is {:.2f}.", side, area );
     return 0;
 }
 
 //
 
 // [functions] Define a function:
-constexpr double get_circle_area ( float radius )
+constexpr double get_circle_area ( double radius )
 {
     return radius * 2 * pi;
+}
+
+constexpr double get_square_area ( double side )
+{
+    return side * side;
 }
