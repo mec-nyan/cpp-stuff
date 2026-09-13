@@ -10,9 +10,18 @@ constexpr double get_circle_area ( double radius );
 
 constexpr double get_square_area ( double side );
 
+// You can declare and define at the same time:
+auto print_point ( int x, int y )
+{
+    println ( "Point at ({}, {})", x, y );
+}
+
 int main ()
 {
-    // [initialisation]
+    ////////////////////
+    // Initialisation //
+    ////////////////////
+
     // Traditional (Inherited from C. Allows narrowing conversions):
     string me = "I";
     // Universal "list" initialisation (prefer this one when possible):
@@ -46,6 +55,32 @@ int main ()
     // !!! "side" don't exist here!
     // !!! "area" is the other "area" ...
     // println ( "The area of a square of side {} is {:.2f}.", side, area );
+
+    /////////////////
+    // Mutability. //
+    /////////////////
+
+    // These are mutable:
+    auto x{ 0 };
+    auto y{ 1 };
+
+    // This is alright:
+    x = 42;               // BTW this is called assignment iydk.
+    print_point ( x, y ); // "Point at (42, 1)"
+
+    // You can create constants in (at least) two ways:
+    {
+        // "I promise I won't change it" style.
+        const auto x{ 17 };
+        // "Compile time" enforced style (use this whenever possible).
+        constexpr auto y{ 33 };
+
+        // x = 42;  Wrong! You cannot change this binding!
+        // y = 123;  Wrong! You cannot change this binding!
+
+        print_point ( x, y );
+    }
+
     return 0;
 }
 
