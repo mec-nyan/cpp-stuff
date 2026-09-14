@@ -1,6 +1,9 @@
-// stuff.cpp
-// import std;
-#include <print>
+///////////////
+// stuff.cpp //
+///////////////
+
+import std;
+
 using namespace std;
 
 // (C++20) [modules] You can import your modules line this:

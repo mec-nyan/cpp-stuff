@@ -1,11 +1,11 @@
 export module Beans;
 
-// import std;
-// #include <print>
+import std;
 
 export auto love_beans ()
 {
-    // std::println ( "I love beans!" );
+    using namespace std;
+    println ( "I love beans!" );
     return 1;
 }
 
