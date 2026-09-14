@@ -1,5 +1,6 @@
 // stuff.cpp
-import std;
+// import std;
+#include <print>
 using namespace std;
 
 // (C++20) [modules] You can import your modules line this:
@@ -86,6 +87,9 @@ int main ()
 
     // [modules] use your imported stuff like this:
     love_beans();
+
+    auto b = Beans();
+    println ( "(Beans)::{} is {}", b.x42(), b.x42() );
 
     return 0;
 }

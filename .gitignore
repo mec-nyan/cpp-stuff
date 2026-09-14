@@ -3,3 +3,6 @@
 .clang-format
 gcm.cache/
 app
+.cache/
+compile_commands.json
+*.pcm

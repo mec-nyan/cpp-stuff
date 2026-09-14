@@ -1,40 +1,35 @@
-CXX = g++-16
+# CXX = g++-16
+CXX = clang++-21
 
-CXXFLAGS = -std=c++23 -Wall -Wextra -Wpedantic -Werror -fmodules
+CXXFLAGS = -std=c++23 -Wall -Wextra -Wpedantic -Werror
+
+MODULE = Beans
+MODULE_SRC = Beans.cppm
+MODULE_BMI = $(MODULE).pcm
+MODULE_OBJ = $(MODULE).o
 
 PROGRAM = app
+
 OBJECTS = main.o Beans.o
-CACHE = gcm.cache/std.gcm
 
-.PHONY: all run clean std
+.PHONY: all run clean # std
 
-# Default target:
 all: $(PROGRAM)
 
-# Build the standard library module:
-std: $(CACHE)
+$(MODULE_BMI): $(MODULE_SRC)
+	@$(CXX) $(CXXFLAGS) --precompile $< -o $@
 
-# As a target:
-$(CACHE):
-	@$(CXX) $(CXXFLAGS) -fsearch-include-path -fmodule-only -c bits/std.cc
+$(MODULE_OBJ): $(MODULE_SRC) $(MODULE_BMI)
+	@$(CXX) $(CXXFLAGS) -fmodule-file=$(MODULE)=$(MODULE_BMI) -c $< -o $@
+	
+main.o: main.cpp $(MODULE_BMI)
+	@$(CXX) $(CXXFLAGS) -fmodule-file=$(MODULE)=$(MODULE_BMI) -c $< -o $@
 
-# Compile module "Beans":
-Beans.o: Beans.cpp $(CACHE)
-	@$(CXX) $(CXXFLAGS) -c $< -o $@
-
-# main imports both 'std' and 'Beans':
-main.o: main.cpp Beans.o $(CACHE)
-	@$(CXX) $(CXXFLAGS) -c $< -o $@
-
-# Link the executable:
 $(PROGRAM): $(OBJECTS)
-	@$(CXX) $^ -o $@
+	@$(CXX) $(OBJECTS) -o $@
 
 run: $(PROGRAM)
-	./$(PROGRAM)
+	@./$(PROGRAM)
 
 clean:
-	@rm $(PROGRAM) $(OBJECTS)
-
-clean-all:
-	@rm -rf $(PROGRAM) $(OBJECTS) gcm.cache
+	@rm -f $(PROGRAM) $(OBJECTS) $(MODULE_BMI)
