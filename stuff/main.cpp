@@ -2,6 +2,8 @@
 // stuff.cpp //
 ///////////////
 
+#include "include/hello/hello.hpp"
+
 import std;
 
 using namespace std;
@@ -93,6 +95,11 @@ int main ()
 
     auto b = Beans();
     println ( "(Beans)::{} is {}", b.x42(), b.x42() );
+
+    // [#include] can still be used:
+
+    x = 21;
+    println ( "{} + {} is {}.", x, x, sum_some ( x, x ) );
 
     return 0;
 }
