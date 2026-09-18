@@ -26,7 +26,7 @@ $(BUILD_DIR):
 	@echo "Making directory 'build'"
 	@mkdir $(BUILD_DIR)
 
-$(STD_PCM): $(STD_SRC) $(BUILD_DIR)
+$(STD_PCM): $(STD_SRC) | $(BUILD_DIR)
 	@echo "Compiling std module"
 	@$(CXX) $(CXXFLAGS) -Wno-reserved-module-identifier --precompile $< -o $@
 
