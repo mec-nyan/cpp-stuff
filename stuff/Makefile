@@ -4,8 +4,10 @@ CXXFLAGS = -std=c++23 -stdlib=libc++ -Wall -Wextra -Wpedantic -Werror
 
 PROGRAM = app
 
+BUILD_DIR = build
+
 STD_SRC = /usr/lib/llvm-21/share/libc++/v1/std.cppm
-STD_PCM = std.pcm
+STD_PCM = $(BUILD_DIR)/std.pcm
 
 MODULE = Beans
 MODULE_SRC = Beans.cppm
@@ -18,7 +20,10 @@ OBJECTS = main.o $(MODULE_OBJ)
 
 all: $(PROGRAM)
 
-$(STD_PCM): $(STD_SRC)
+$(BUILD_DIR):
+	@mkdir $(BUILD_DIR)
+
+$(STD_PCM): $(STD_SRC) $(BUILD_DIR)
 	@$(CXX) $(CXXFLAGS) -Wno-reserved-module-identifier --precompile $< -o $@
 
 $(MODULE_BMI): $(MODULE_SRC) $(STD_PCM)
