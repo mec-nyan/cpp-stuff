@@ -3,13 +3,9 @@
 ///////////////
 
 #include "include/hello/hello.hpp"
-
-import std;
+#include <print>
 
 using namespace std;
-
-// (C++20) [modules] You can import your modules line this:
-import Beans;
 
 // [Scope/lifetime] This binding is global (avoid).
 constexpr auto pi{ 3.1416 };
@@ -89,12 +85,6 @@ int main ()
 
         print_point ( x, y );
     }
-
-    // [modules] use your imported stuff like this:
-    love_beans();
-
-    auto b = Beans();
-    println ( "(Beans)::{} is {}", b.x42(), b.x42() );
 
     // [#include] can still be used:
 
