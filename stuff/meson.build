@@ -10,6 +10,8 @@ dependencies = [
 ]
 
 sources = [
+  'src/area.cpp',
+  'src/initialisation.cpp',
   'src/main.cpp',
 ]
 
