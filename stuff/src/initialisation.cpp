@@ -1,5 +1,5 @@
-#include "include/initialisation.hpp"
-#include "include/area.hpp"
+#include "initialisation.hpp"
+#include "area.hpp"
 #include <print>
 #include <string>
 using namespace std;

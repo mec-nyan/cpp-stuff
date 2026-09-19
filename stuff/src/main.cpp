@@ -4,10 +4,10 @@
 
 #include <print>
 
-#include "include/area.hpp"
-#include "include/hello.hpp"
-#include "include/initialisation.hpp"
-#include "include/point.hpp"
+#include "area.hpp"
+#include "hello.hpp"
+#include "initialisation.hpp"
+#include "point.hpp"
 
 using namespace std;
 
