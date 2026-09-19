@@ -2,8 +2,8 @@
 
 Kind of a modern **C++** tutorial.
 
-[![cpp](https://img.shields.io/badge/C%2B%2B-%3E%3D20-blue?style=for-the-badge)]()
-[![meson](https://img.shields.io/badge/Meson-1.10.1-mediumpurple?style=for-the-badge)]()
+[![cpp](https://img.shields.io/badge/C%2B%2B-%3E%3D20-blue?style=for-the-badge)](https://isocpp.org/)
+[![meson](https://img.shields.io/badge/Meson-1.10.1-mediumpurple?style=for-the-badge)](https://mesonbuild.com/)
 
 
 > [!NOTE]
@@ -70,3 +70,12 @@ Or simply use the command line.
 
 The examples have been compiled with GCC 16 and the `-std=c++23` flag (for `<print>`).
 
+
+# Related documentation
+
+- [GNU Make](https://www.gnu.org/software/make/)
+- [clangd](https://clangd.llvm.org/)
+- [cppreference.com](https://en.cppreference.com/)
+- [Meson](https://mesonbuild.com/)
+- [How to set up a development environment for GCC on Ubuntu](https://ubuntu.com/developers/docs/howto/gcc-setup/)
+- [ISO C++](https://isocpp.org/)
