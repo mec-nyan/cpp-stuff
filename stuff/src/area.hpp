@@ -1,7 +1,7 @@
-// [Scope/lifetime] This binding is global (avoid).
+// TODO: Document header?
+
 constexpr auto pi{ 3.1416 };
 
-// [functions] Declare a function ([qualifiers] return_value name([args]);).
-double get_circle_area ( double radius );
+auto get_circle_area ( double radius ) -> double;
 
-double get_square_area ( double side );
+auto get_square_area ( double side ) -> double;

@@ -1,3 +1,5 @@
+// TODO: Document header?
+
 #include <print>
 
 // You can declare and define at the same time:

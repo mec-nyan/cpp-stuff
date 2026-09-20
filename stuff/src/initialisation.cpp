@@ -8,6 +8,8 @@ using namespace std;
 // Initialisation //
 ////////////////////
 
+// There are lots of ways to initialise a variable (or a constant) in C++.
+// Prefer the universal, list initialisation (x = {...}).
 auto initialisation () -> void
 {
 

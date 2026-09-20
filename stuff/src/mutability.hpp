@@ -1,1 +1,3 @@
-auto mutability() -> void;
+// TODO: Document header?
+
+auto mutability () -> void;

@@ -5,6 +5,8 @@
 // Mutability. //
 /////////////////
 
+// Variables are mutable by default.
+// You can create constants with either `const` or `constexpr` (Not the same thing!).
 auto mutability () -> void
 {
     // These are mutable:
