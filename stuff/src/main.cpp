@@ -2,13 +2,8 @@
 // stuff.cpp //
 ///////////////
 
+#include "all.hpp"
 #include <print>
-
-#include "area.hpp"
-#include "hello.hpp"
-#include "initialisation.hpp"
-#include "mutability.hpp"
-
 using namespace std;
 
 int main ()
