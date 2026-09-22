@@ -39,8 +39,8 @@ auto initialisation () -> void
     println ( "{} {} {}!", me, love, cpp );
 
     // Beware of traditional initialisation ...
-    int bad_rad = 12.5; // Will compile, but now 'bad_rad' is '12' ...
-    auto rad{ 12.5 };   // Use list initialisation instead.
+    // int bad_rad = 12.5; // Will compile, but now 'bad_rad' is '12' ...
+    auto rad{ 12.5 }; // Use list initialisation instead.
     auto area{ get_circle_area ( rad ) };
 
     println ( "The area of a circle of radius {} is {:.2f}.", rad, area );

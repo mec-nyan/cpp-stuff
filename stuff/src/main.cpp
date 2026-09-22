@@ -3,8 +3,6 @@
 ///////////////
 
 #include "all.hpp"
-#include <print>
-using namespace std;
 
 int main ()
 {
@@ -16,10 +14,6 @@ int main ()
 
     // Mutability
     mutability();
-
-    // Use of "#include"d function/symbol:
-    auto x = 21;
-    println ( "{} + {} is {}.", x, x, sum_some ( x, x ) );
 
     return 0;
 }

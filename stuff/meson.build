@@ -12,6 +12,7 @@ dependencies = [
 sources = [
   'src/area.cpp',
   'src/initialisation.cpp',
+  'src/mutability.cpp',
   'src/main.cpp',
 ]
 
