@@ -3,11 +3,12 @@
 #include <cstdint>
 #include <print>
 #include <string>
-using namespace std;
 
-////////////////////
-// Initialisation //
-////////////////////
+using namespace std::literals;
+
+/*----------------*
+ * Initialisation *
+ *----------------*/
 
 //! Initialising objects.
 
@@ -16,7 +17,8 @@ using namespace std;
 //! to some space in memory (i.e. what we poorly call "variables").
 auto initialisation () -> void
 {
-    // PREFERRED //
+    // ✨ PREFERRED ✨ //
+    //
     // Use these unless you have a good reason not to (IMHO).
     //
     // The basic form is:
@@ -32,31 +34,39 @@ auto initialisation () -> void
     //
     // The "{ ... }" form avoids narrowing conversions.  You're welcome.
 
-    string love{ "💖" };
+    // Here, we're using a User Defined Literal.
+    // So we get a "string" instead of "const char*".
+    auto me{ "I"s };
 
-    // "=" is optional in the list initialisation (Don't use it...).
-    string cpp = { "C++" };
+    // You can specify the type.  Both "auto name" and "type name" are useful in different
+    // scenarios.
+    std::string love{ "💖" };
+
+    // With the list initialiser, the "=" is optional.  Avoid it.  (It can have surprising effects.)
+    auto cpp = { "C++"s };
+
+    // Traditional (inherited from C, allows narrowing conversions) can also be used:
+    std::string excl = "!✨✨✨";
+
+    std::println ( "{} {} {}{}", me, love, cpp, excl );
 
     {
         // NOTEs:
         // You can use `auto` to let the compiler deduce the variable's type.
         // Be aware that sometimes it won't be what you expect ...
-        auto foo{ "foo" };            // Not a string! The deduced type will be 'const char*' ...
-        auto bar{ string ( "bar" ) }; // OK, but what's the point.  You had to specify the type anyway.
-        auto n{ 42 };                 // OK if you want an 'int'.
-        int32_t m{ 42 };              // Otherwise, be specific with the type you need.
+        auto foo{ "foo" };                  // Not a string! The deduced type will be 'const char*' ...
+        auto bar{ std::string ( "bar" ) };  // OK, but what's the point.  You had to specify the type anyway.
+        auto n{ 42 };                       // OK if you want an 'int'.
+        int32_t m{ 42 };                    // Otherwise, be specific with the type you need.
 
         println ( "{}, {}, {}, {}", foo, bar, n, m );
     }
-
-    // Traditional (inherited from C, allows narrowing conversions) can also be used:
-    string me = "I";
 
     println ( "{} {} {}!", me, love, cpp );
 
     // Beware of traditional initialisation ...
     // int bad_rad = 12.5; // Will compile, but now 'bad_rad' is '12' ...
-    auto rad{ 12.5 }; // Use list initialisation instead.
+    auto rad{ 12.5 };  // Use list initialisation instead.
     auto area{ get_circle_area ( rad ) };
 
     println ( "The area of a circle of radius {} is {:.2f}.", rad, area );
