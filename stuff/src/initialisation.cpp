@@ -9,13 +9,29 @@ using namespace std;
 // Initialisation //
 ////////////////////
 
-// There are lots of ways to initialise a variable (or a constant) in C++.
-// Prefer the universal, list initialisation (x = {...}).
+//! Initialising objects.
+
+//! This example show a few ways (there's a lot more) of initialising objects.
+//! No.  Not that kind of "objects".  An object in the sense of something referring
+//! to some space in memory (i.e. what we poorly call "variables").
 auto initialisation () -> void
 {
     // PREFERRED //
-    // Universal "list" initialisation (prefer this one when possible):
-    // The basic form is `type name { initialiser }`.
+    // Use these unless you have a good reason not to (IMHO).
+    //
+    // The basic form is:
+    //
+    //    auto name { value };
+    //    type name { value };
+    //
+    // The "{ ... }" this is called "universal" list initialisation. Use that
+    // instead of the old:
+    //
+    //     auto name = value;
+    //     type name = value;
+    //
+    // The "{ ... }" form avoids narrowing conversions.  You're welcome.
+
     string love{ "💖" };
 
     // "=" is optional in the list initialisation (Don't use it...).
