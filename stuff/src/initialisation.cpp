@@ -51,26 +51,36 @@ auto initialisation () -> void
     std::println ( "{} {} {}{}", me, love, cpp, excl );
 
     {
-        // NOTEs:
-        // You can use `auto` to let the compiler deduce the variable's type.
-        // Be aware that sometimes it won't be what you expect ...
-        auto foo{ "foo" };                  // Not a string! The deduced type will be 'const char*' ...
-        auto bar{ std::string ( "bar" ) };  // OK, but what's the point.  You had to specify the type anyway.
-        auto n{ 42 };                       // OK if you want an 'int'.
-        int32_t m{ 42 };                    // Otherwise, be specific with the type you need.
+        // NOTE:
+        // When using "auto", sometimes it's what you want.  Sometimes you need to be a little bit
+        // more specific. I.e.:
 
-        println ( "{}, {}, {}, {}", foo, bar, n, m );
+        // Not a string! The deduced type will be 'const char*' ...
+        auto this_{ "This" };
+        // If you want a string, you can use a "string_literal":
+        auto gets{ "getting"s };
+        // Or say the type explicitly:
+        std::string comp{ "complicated" };
+
+        // The same goes for other types:
+
+        // OK if you want an 'int'.
+        auto n{ 42 };
+        // Otherwise, be specific with the type you need.
+        int32_t m{ 42 };
+
+        std::println ( "{} is {} a little bit {}", this_, gets, comp );
+        std::println ( "The answer is {} (or is it {}?)", n, m );
     }
-
-    println ( "{} {} {}!", me, love, cpp );
 
     // Beware of traditional initialisation ...
     // int bad_rad = 12.5; // Will compile, but now 'bad_rad' is '12' ...
     auto rad{ 12.5 };  // Use list initialisation instead.
     auto area{ get_circle_area ( rad ) };
 
-    println ( "The area of a circle of radius {} is {:.2f}.", rad, area );
+    std::println ( "The area of a circle of radius {} is {:.2f}.", rad, area );
 
+    // TODO: Move this example to "scope.cpp".
     // [scope/lifetime]
     {
         // Each block defines a new lexical scope.
@@ -81,13 +91,13 @@ auto initialisation () -> void
         // This is a new variable!
         auto area{ get_square_area ( side ) };
 
-        println ( "The area of a square of side {} is {:.2f}.", side, area );
+        std::println ( "The area of a square of side {} is {:.2f}.", side, area );
 
-        // side's liftime ends here.
+        // side's lifetime ends here.
         // So this inner block's "area"'s lifetime.
     }
 
     // !!! "side" don't exist here!
     // !!! "area" is the other "area" ...
-    // println ( "The area of a square of side {} is {:.2f}.", side, area );
+    // std::println ( "The area of a square of side {} is {:.2f}.", side, area );
 }
