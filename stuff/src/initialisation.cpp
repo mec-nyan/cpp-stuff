@@ -74,8 +74,14 @@ auto initialisation () -> void
     }
 
     // Beware of traditional initialisation ...
-    // int bad_rad = 12.5; // Will compile, but now 'bad_rad' is '12' ...
-    auto rad{ 12.5 };  // Use list initialisation instead.
+    // This will compile ... (See * at the bottom of the file.)
+    int bad_rad = 12.5;
+
+    // ... but bad_rad is now '12' ...
+    std::println ( "Want 12.5 but got {}.", bad_rad );
+
+    // Use list initialisation instead.
+    auto rad{ 12.5 };
     auto area{ get_circle_area ( rad ) };
 
     std::println ( "The area of a circle of radius {} is {:.2f}.", rad, area );
@@ -101,3 +107,6 @@ auto initialisation () -> void
     // !!! "area" is the other "area" ...
     // std::println ( "The area of a square of side {} is {:.2f}.", side, area );
 }
+
+// NOTE:
+// *: "This will compile ..."  Yes, but you can turn warnings into compile time errors to avoid it.
