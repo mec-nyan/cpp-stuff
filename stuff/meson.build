@@ -13,6 +13,7 @@ sources = [
   'src/area.cpp',
   'src/initialisation.cpp',
   'src/mutability.cpp',
+  'src/app.cpp',
   'src/main.cpp',
 ]
 
