@@ -13,6 +13,12 @@ auto usage ()
     std::println ( "Usage: ..." );
 }
 
+// TODO: implement "not implemented".
+auto not_implemented ()
+{
+    std::println ( "Not implemented ..." );
+}
+
 namespace app
 {
 
@@ -39,7 +45,8 @@ auto App::run ( int argc, char *argv[] ) -> int
         initialisation();
     else if (arg == "mutability")
         mutability();
-    //...
+    else
+        not_implemented();
 
     return 0;
 }
