@@ -1,2 +1,2 @@
 
-auto initialisation () -> void;
+auto initialisation() -> void;
